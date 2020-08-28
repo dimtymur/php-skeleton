@@ -3,10 +3,10 @@
 namespace App\Core;
 
 class Route {
-    private $namespace   = "App\Controllers\\";
-    private $controller  = "HomeController";
-    private $action      = "index";
-    private $params      = [];
+    private $namespace = "App\Controllers\\";
+    private $controller;
+    private $action;
+    private $params;
 
     static private $resources = [];
 
@@ -15,10 +15,7 @@ class Route {
     }
 
     private function useRoute() : void {
-        if (empty($_GET["url"]) || empty(trim($_GET["url"], "/"))) {
-            $this->execController();
-            return;
-        } $url = trim($_GET["url"], "/");
+        $url = empty($_GET["url"]) ? "" : trim($_GET["url"], "/");
 
         foreach (self::$resources as $route => $action)
             if ($this->validateRoute($url, $route)) {

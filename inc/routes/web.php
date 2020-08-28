@@ -3,6 +3,8 @@
 use App\Core\Route;
 use App\Core\Controller;
 
+Route::setRoute("/", "HomeController@index");
+
 Route::setRoute("/some/{}/loc/{}", "HomeController@index");
 
 Route::setRoute("/some/{}/path/{}", function(string $arg1, string $arg2) : void {
