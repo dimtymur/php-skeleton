@@ -35,37 +35,37 @@ class Database {
     }
 
     public function record_add(string $table, array $attrs) : void {
-        $cols_str = ""; $cols_temp = "";
-        foreach ($attrs as $col => $val) {
-        	$cols_str .= ",$col"; $cols_temp .= ",?";
-        	$vals[] = $val;
+        $columns_str = ""; $columns_temp = "";
+        foreach ($attrs as $column => $value) {
+        	$columns_str .= ",$column"; $columns_temp .= ",?";
+        	$values[] = $value;
         }
-        $cols_str   = trim($cols_str, ",");
-        $cols_temp  = trim($cols_temp, ",");
+        $columns_str = trim($columns_str, ",");
+        $columns_temp = trim($columns_temp, ",");
 
-        $query = "INSERT INTO $table ($cols_str) VALUES ($cols_temp);";
-        $this->query($query, $vals);
+        $query = "INSERT INTO $table ($columns_str) VALUES ($columns_temp);";
+        $this->query($query, $values);
     }
 
-    public function records_delete(string $table, string $id_col, $id_val) : void {
-        $query = "DELETE FROM $table WHERE $id_col = ?;";
-        $this->query($query, [$id_val]);
+    public function records_delete(string $table, string $id_column, $id_value) : void {
+        $query = "DELETE FROM $table WHERE $id_column = ?;";
+        $this->query($query, [$id_value]);
     }
 
-    public function records_edit(string $table, string $id_col, $id_val, array $attrs) : void {
-        $cols_temp = "";
-        foreach ($attrs as $col => $val) {
-        	$cols_temp .= ",$col=?"; $vals[] = $val;
+    public function records_edit(string $table, string $id_column, $id_value, array $attrs) : void {
+        $columns_temp = "";
+        foreach ($attrs as $column => $value) {
+        	$columns_temp .= ",$column=?"; $values[] = $value;
         }
-        $vals[]     = $id_val;
-        $cols_temp  = trim($cols_temp, ",");
+        $values[] = $id_value;
+        $columns_temp = trim($columns_temp, ",");
 
-        $query = "UPDATE $table SET $cols_temp WHERE $id_col = ?;";
-        $this->query($query, $vals);
+        $query = "UPDATE $table SET $columns_temp WHERE $id_column = ?;";
+        $this->query($query, $values);
     }
 
-    public function records_get(string $table, string $id_col, $id_val) : array {
-        $query = "SELECT * FROM $table WHERE $id_col = ?;";
-        return $this->query($query, [$id_val]);
+    public function records_get(string $table, string $id_column, $id_value) : array {
+        $query = "SELECT * FROM $table WHERE $id_column = ?;";
+        return $this->query($query, [$id_value]);
     }
 }
