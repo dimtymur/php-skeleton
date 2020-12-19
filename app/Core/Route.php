@@ -53,8 +53,8 @@ class Route {
     }
 
     private function execController() : bool {
-        if (file_exists(CONTROLLERS . $this->controller . ".php")) {
-            $controller = $this->namespace . $this->controller;
+        $controller = $this->namespace . $this->controller;
+        if (class_exists($controller)) {
             $this->controller = new $controller;
             if (method_exists($this->controller, $this->action)) {
                 call_user_func_array([$this->controller, $this->action], $this->params);

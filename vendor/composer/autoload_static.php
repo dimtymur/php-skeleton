@@ -21,12 +21,13 @@ class ComposerStaticInit03a5bc6f1e9570508b6858f383dc7882
     );
 
     public static $classMap = array (
-        'App\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/controllers/HomeController.php',
-        'App\\Core\\Controller' => __DIR__ . '/../..' . '/app/core/Controller.php',
-        'App\\Core\\Database' => __DIR__ . '/../..' . '/app/core/Database.php',
-        'App\\Core\\Route' => __DIR__ . '/../..' . '/app/core/Route.php',
-        'App\\Core\\View' => __DIR__ . '/../..' . '/app/core/View.php',
-        'App\\Exceptions\\RouteException' => __DIR__ . '/../..' . '/app/exceptions/RouteException.php',
+        'App\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Controllers/HomeController.php',
+        'App\\Core\\Controller' => __DIR__ . '/../..' . '/app/Core/Controller.php',
+        'App\\Core\\Database' => __DIR__ . '/../..' . '/app/Core/Database.php',
+        'App\\Core\\Route' => __DIR__ . '/../..' . '/app/Core/Route.php',
+        'App\\Core\\View' => __DIR__ . '/../..' . '/app/Core/View.php',
+        'App\\Exceptions\\RouteException' => __DIR__ . '/../..' . '/app/Exceptions/RouteException.php',
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
